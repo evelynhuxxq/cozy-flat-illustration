@@ -9,7 +9,8 @@ description: Turn a photo into a copy-paste image prompt for warm, densely popul
 
 Read the photo → analyse it → output one **copy-paste-ready English image prompt**, plus a short explanation.
 The user generates the image themselves in a chat-style image tool (ChatGPT, Gemini, etc.) by sending the
-original photo together with the prompt. **This skill does not generate images.**
+original photo together with the prompt. This skill does not paint the illustration itself. After the
+illustration is generated, it can be finished as a postage stamp with the included local framing tool.
 
 Write the explanation in whatever language the user is writing in. The prompt itself is always English —
 image models understand English style vocabulary far better.
@@ -243,7 +244,10 @@ The chosen presentation format. Four hard rules:
 - below it, small: region and year (`WASHINGTON · 2025`)
 - bottom right: a denomination number
 
-`tools/stamp-frame.html` in this repository implements all of the above.
+`tools/stamp-frame.html` in this repository implements this framing. Open it in a browser, choose the
+finished illustration, optionally enter the three caption fields, and download the transparent PNG. It
+keeps the source canvas dimensions and uses small round perforations (postal-stamp teeth), rather than
+harsh triangular zigzags.
 
 **A consistent format across the whole batch matters more than any single frame.** The same frame on
 fifteen images makes them a body of work; without it they are fifteen loose pictures.
@@ -259,6 +263,8 @@ fifteen images makes them a body of work; without it they are fifteen loose pict
 4. A reminder to upload reference images alongside the photo.
 5. Three tuning suggestions, each a sentence they can drop in or swap out. When a face is visible, one of
    them is always the face escape hatch (pull back, turn to profile, or go to silhouette).
+6. If the user asks for a finished stamp image, tell them to apply `tools/stamp-frame.html` after generating
+   the illustration. Do not ask the image model to draw the perforated border.
 
 ## Fidelity
 

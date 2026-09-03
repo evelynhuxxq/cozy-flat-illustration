@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Postage Stamp Frame</title>
+<style>
+  :root { color-scheme: light; font-family: ui-rounded, system-ui, sans-serif; color: #2d2926; background: #f7f1e8; }
+  body { max-width: 860px; margin: 0 auto; padding: 32px 20px 48px; }
+  h1 { margin: 0 0 8px; font-size: 28px; } p { line-height: 1.5; }
+  .panel { display: grid; gap: 12px; padding: 18px; border: 1px solid #dacbbc; border-radius: 16px; background: #fffaf4; }
+  .fields { display: grid; grid-template-columns: 1.2fr 1fr .6fr; gap: 10px; }
+  label { display: grid; gap: 5px; font-size: 14px; font-weight: 650; }
+  input { box-sizing: border-box; width: 100%; padding: 9px 10px; border: 1px solid #cdbdad; border-radius: 8px; font: inherit; }
+  button { justify-self: start; padding: 10px 15px; border: 0; border-radius: 9px; background: #315f50; color: white; font: inherit; font-weight: 700; cursor: pointer; }
+  canvas { display: block; max-width: 100%; margin-top: 24px; filter: drop-shadow(0 8px 10px #6a554333); }
+  #download { display: none; margin-top: 14px; } .note { font-size: 13px; color: #655d57; }
+  @media (max-width: 560px) { .fields { grid-template-columns: 1fr; } }
+</style>
+<body>
+  <h1>Postage Stamp Frame</h1>
+  <p>Choose a finished illustration. The downloadable PNG keeps its original dimensions and adds a colored, perforated stamp edge.</p>
+  <section class="panel">
+    <label>Illustration <input id="image" type="file" accept="image/*"></label>
+    <div class="fields">
+      <label>Place name <input id="place" placeholder="PUGET SOUND"></label>
+      <label>Region · year <input id="region" placeholder="WASHINGTON · 2025"></label>
+      <label>Denomination <input id="value" placeholder="25¢"></label>
+    </div>
+    <button id="render" type="button">Create stamp</button>
+    <span class="note">Tip: leave captions blank for a clean border-only version.</span>
+  </section>
+  <canvas id="canvas" hidden></canvas>
+  <button id="download" type="button">Download PNG</button>
+<script>
+  const imageInput = document.querySelector('#image');
+  const canvas = document.querySelector('#canvas');
+  const context = canvas.getContext('2d');
+  const download = document.querySelector('#download');
+  let source;
+
+  function loadImage(file) {
+    return new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file), image = new Image();
+      image.onload = () => { URL.revokeObjectURL(url); resolve(image); };
+      image.onerror = reject; image.src = url;
+    });
+  }
+  function luminance(r, g, b) { return (r * 0.2126 + g * 0.7152 + b * 0.0722) / 255; }
+  function accentColor(image) {
+    const sample = document.createElement('canvas'); sample.width = sample.height = 1;
+    const ctx = sample.getContext('2d'); ctx.drawImage(image, 0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    const factor = luminance(r, g, b) > .55 ? .5 : .72;
+    return `rgb(${Math.round(r * factor)}, ${Math.round(g * factor)}, ${Math.round(b * factor)})`;
+  }
+  function text(ctx, value, x, y, size, align) {
+    if (!value) return; ctx.textAlign = align; ctx.fillStyle = '#fffaf0';
+    ctx.font = `600 ${size}px Georgia, serif`; ctx.letterSpacing = `${Math.max(1, size * .08)}px`;
+    ctx.fillText(value.toUpperCase(), x, y);
+  }
+  function draw() {
+    if (!source) return;
+    const w = source.naturalWidth, h = source.naturalHeight, short = Math.min(w, h);
+    const border = Math.max(14, short * .04), band = border * 2;
+    const radius = Math.max(4, border * .28), step = radius * 2.55;
+    canvas.width = w; canvas.height = h; canvas.hidden = false;
+    context.clearRect(0, 0, w, h);
+    context.save();
+    context.beginPath(); context.rect(border, border, w - border * 2, h - border * 2); context.clip();
+    context.drawImage(source, 0, 0, w, h); context.restore();
+    const accent = accentColor(source);
+    context.fillStyle = accent; context.fillRect(0, 0, w, h);
+    context.save(); context.globalCompositeOperation = 'destination-out';
+    for (let x = step / 2; x < w; x += step) for (const y of [0, h]) { context.beginPath(); context.arc(x, y, radius, 0, Math.PI * 2); context.fill(); }
+    for (let y = step / 2; y < h; y += step) for (const x of [0, w]) { context.beginPath(); context.arc(x, y, radius, 0, Math.PI * 2); context.fill(); }
+    context.restore();
+    context.save(); context.beginPath(); context.rect(border, border, w - border * 2, h - border * 2); context.clip();
+    context.drawImage(source, 0, 0, w, h); context.restore();
+    const place = document.querySelector('#place').value;
+    const region = document.querySelector('#region').value;
+    const value = document.querySelector('#value').value;
+    if (place || region || value) {
+      context.fillStyle = accent; context.fillRect(border, h - border - band, w - border * 2, band);
+      text(context, place, border * 1.45, h - border - band * .48, Math.max(10, short * .028), 'left');
+      text(context, region, border * 1.45, h - border - band * .16, Math.max(8, short * .015), 'left');
+      text(context, value, w - border * 1.45, h - border - band * .28, Math.max(11, short * .034), 'right');
+    }
+    download.style.display = 'block';
+  }
+  imageInput.addEventListener('change', async () => { if (imageInput.files[0]) { source = await loadImage(imageInput.files[0]); draw(); } });
+  document.querySelector('#render').addEventListener('click', draw);
+  download.addEventListener('click', () => { const a = document.createElement('a'); a.download = 'postage-stamp.png'; a.href = canvas.toDataURL('image/png'); a.click(); });
+</script>
+</body>
+</html>
