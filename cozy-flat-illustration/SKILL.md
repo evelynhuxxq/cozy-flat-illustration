@@ -153,7 +153,8 @@ graphic element**: one solid darker tone, crisp contours, no gradient.
 
 ### First choice: make them small
 In this style people are 1/20 to 1/10 of the frame height — a colored shape with simplified limbs and
-**no facial features at all**. Take this option whenever possible; it carries zero risk.
+**no facial features at all**. Use this option only when the person is genuinely distant or facing away;
+never use a featureless face on a visible medium or large figure.
 `Populate the scene with many tiny figures, each a simple painted shape with no facial features at all.`
 
 ### Risk ordering
@@ -220,9 +221,11 @@ A very short word (five or six letters) is worth a gamble, but flag the risk fir
    omit the clause. If a precise matching frame matters more than the generated frame, generate the artwork
    without a frame and use `tools/stamp-frame.html` afterwards.
 5. When a source photo includes a person, default to a small, simplified painted figure whose face is not a
-   focal point. Preserve clothing, pose, hair silhouette and placement; use no facial features, a back view,
-   a side view, or closed eyes. Let the landscape carry the detail. Render a large, detailed face only when
-   the user explicitly asks for a portrait.
+   focal point. Preserve clothing, pose, hair silhouette and placement; let the landscape carry the detail.
+   If the face is visible, render a complete, kind, stylized face with small aligned eyes, soft brows, a
+   subtle nose stroke and a closed mouth, all in the same painted texture as the scene. Never leave a visible
+   face blank or featureless. Use no facial features only for a genuinely tiny distant figure or a back view.
+   Render a large, detailed face only when the user explicitly asks for a portrait.
 6. Return the generated image, one short sentence about the treatment, and three concise tuning options.
    Do not output the long prompt by default.
 
