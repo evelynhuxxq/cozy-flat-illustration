@@ -12,8 +12,9 @@ Do not make the user copy a prompt into another image app unless they explicitly
 version. Include the uploaded photo as the image reference and preserve its essential subject and
 composition.
 
-Default to the finished **postage-stamp presentation**: a hand-painted illustration inside a colored
+Default to the finished **postage-stamp presentation**: a hand-painted illustration inside a warm ivory
 perforated edge. The frame should feel designed as part of the artwork, not pasted on as a generic sticker.
+Use a different edge color only when the user specifies one; do not default every landscape to green.
 Use the included local framing tool only when the user requests pixel-perfect, repeatable framing across a
 batch, or when image generation renders the edge poorly.
 
@@ -208,16 +209,21 @@ A very short word (five or six letters) is worth a gamble, but flag the risk fir
 2. Build one English generation instruction using the structure below, then generate the image directly.
 3. Include this framing clause by default:
 
-   > Finish the artwork as a charming vintage postage stamp: a clean, even colored border about 4% of the
+   > Finish the artwork as a charming vintage postage stamp: a clean, even warm ivory or parchment border
+   > about 4% of the
    > short edge, with small rounded perforation bites along all four outer edges. Keep the scallops evenly
    > spaced and aligned, retain the original aspect ratio, and keep important subjects safely inside the
-   > frame. The frame color is drawn from the artwork and darkened slightly. No text, denomination, logo,
+   > frame. If the user specifies a border color, use that exact color instead. No text, denomination, logo,
    > watermark, signature, or unrelated decorative objects in the border.
 
 4. Keep the border only when it supports the request. If the user explicitly asks for an unframed image,
    omit the clause. If a precise matching frame matters more than the generated frame, generate the artwork
    without a frame and use `tools/stamp-frame.html` afterwards.
-5. Return the generated image, one short sentence about the treatment, and three concise tuning options.
+5. When a source photo includes a person, default to a small, simplified painted figure whose face is not a
+   focal point. Preserve clothing, pose, hair silhouette and placement; use no facial features, a back view,
+   a side view, or closed eyes. Let the landscape carry the detail. Render a large, detailed face only when
+   the user explicitly asks for a portrait.
+6. Return the generated image, one short sentence about the treatment, and three concise tuning options.
    Do not output the long prompt by default.
 
 ## Assembling the generation instruction
@@ -256,12 +262,14 @@ The chosen presentation format. Use direct image generation by default; use the 
 precise fallback. Four hard rules:
 
 1. **For a direct frame, request rounded postal perforations, not triangular saw teeth.** Ask for an even,
-   aligned, colored edge with no text by default. If the edge is visibly skewed, uneven or distracting,
+   aligned warm ivory or parchment edge with no text by default. Use another color only when the user asks
+   for it. If the edge is visibly skewed, uneven or distracting,
    regenerate once without it and use the local tool.
 2. **Output dimensions must match the source ratio** — the stamp fills the entire canvas, the perforations
    bite into the outermost edge, and the inner artwork is cropped to fit. Users pair the framed version with
    the original side by side, so the ratio has to match.
-3. **Pull the accent color from the artwork**, then darken it by about 40%. Never default to black or white.
+3. **Default to warm ivory or parchment**, not black or dark green. Use a stated color exactly; gentle
+   choices such as dusty blue, pale pink, butter yellow, or lavender are welcome when requested.
 4. **Proportions**: margins about 4% of the short edge on all sides; the caption band at the bottom about
    twice the margin. Deeper at the bottom than the top is what makes it read as designed rather than default.
 

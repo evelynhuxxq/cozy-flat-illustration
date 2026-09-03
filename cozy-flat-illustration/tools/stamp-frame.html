@@ -18,10 +18,11 @@
 </style>
 <body>
   <h1>Postage Stamp Frame</h1>
-  <p>Choose a finished illustration. The downloadable PNG keeps its original dimensions and adds a colored, perforated stamp edge.</p>
+  <p>Choose a finished illustration. The downloadable PNG keeps its original dimensions and adds a perforated stamp edge.</p>
   <section class="panel">
     <label>Illustration <input id="image" type="file" accept="image/*"></label>
     <div class="fields">
+      <label>Border color <input id="color" type="color" value="#f4ead9"></label>
       <label>Place name <input id="place" placeholder="PUGET SOUND"></label>
       <label>Region · year <input id="region" placeholder="WASHINGTON · 2025"></label>
       <label>Denomination <input id="value" placeholder="25¢"></label>
@@ -45,14 +46,6 @@
       image.onerror = reject; image.src = url;
     });
   }
-  function luminance(r, g, b) { return (r * 0.2126 + g * 0.7152 + b * 0.0722) / 255; }
-  function accentColor(image) {
-    const sample = document.createElement('canvas'); sample.width = sample.height = 1;
-    const ctx = sample.getContext('2d'); ctx.drawImage(image, 0, 0, 1, 1);
-    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
-    const factor = luminance(r, g, b) > .55 ? .5 : .72;
-    return `rgb(${Math.round(r * factor)}, ${Math.round(g * factor)}, ${Math.round(b * factor)})`;
-  }
   function text(ctx, value, x, y, size, align) {
     if (!value) return; ctx.textAlign = align; ctx.fillStyle = '#fffaf0';
     ctx.font = `600 ${size}px Georgia, serif`; ctx.letterSpacing = `${Math.max(1, size * .08)}px`;
@@ -68,7 +61,7 @@
     context.save();
     context.beginPath(); context.rect(border, border, w - border * 2, h - border * 2); context.clip();
     context.drawImage(source, 0, 0, w, h); context.restore();
-    const accent = accentColor(source);
+    const accent = document.querySelector('#color').value;
     context.fillStyle = accent; context.fillRect(0, 0, w, h);
     context.save(); context.globalCompositeOperation = 'destination-out';
     for (let x = step / 2; x < w; x += step) for (const y of [0, h]) { context.beginPath(); context.arc(x, y, radius, 0, Math.PI * 2); context.fill(); }
