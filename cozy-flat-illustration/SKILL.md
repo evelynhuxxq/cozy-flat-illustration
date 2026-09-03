@@ -1,19 +1,24 @@
 ---
 name: cozy-flat-illustration
-description: Turn a photo into a copy-paste image prompt for warm, densely populated, hand-painted scene illustration — the storybook / jigsaw-puzzle look: soft digital gouache, cheerful color, fine scattered texture, tiny figures, and lots of small things to find. Includes hard-won rules for faces, texture, water, signage and finished framing. Use when the user uploads or points to a photo and asks for illustration style, storybook style, puzzle-style art, painted illustration, or asks to turn a photo into an illustration.
+description: Transform a user-supplied photo into a finished warm, densely populated, hand-painted scene illustration — the storybook / jigsaw-puzzle look: soft digital gouache, cheerful color, fine scattered texture, tiny figures, and lots of small things to find. Generate the image directly, with an optional postage-stamp perforated border. Use when the user uploads or points to a photo and asks for illustration style, storybook style, puzzle-style art, painted illustration, a postal-stamp treatment, or asks to turn a photo into an illustration.
 ---
 
-# Cozy Illustrated Scene — Prompt Generator
+# Cozy Illustrated Scene — Image Generator
 
 ## What this skill does
 
-Read the photo → analyse it → output one **copy-paste-ready English image prompt**, plus a short explanation.
-The user generates the image themselves in a chat-style image tool (ChatGPT, Gemini, etc.) by sending the
-original photo together with the prompt. This skill does not paint the illustration itself. After the
-illustration is generated, it can be finished as a postage stamp with the included local framing tool.
+Read the photo → analyse it → **generate the finished illustration directly with the image-generation tool**.
+Do not make the user copy a prompt into another image app unless they explicitly ask for a prompt-only
+version. Include the uploaded photo as the image reference and preserve its essential subject and
+composition.
 
-Write the explanation in whatever language the user is writing in. The prompt itself is always English —
-image models understand English style vocabulary far better.
+Default to the finished **postage-stamp presentation**: a hand-painted illustration inside a colored
+perforated edge. The frame should feel designed as part of the artwork, not pasted on as a generic sticker.
+Use the included local framing tool only when the user requests pixel-perfect, repeatable framing across a
+batch, or when image generation renders the edge poorly.
+
+Write the short explanation in whatever language the user is writing in. Build the generation instruction in
+English internally; only show it when the user asks to see or reuse the prompt.
 
 ## The target style
 
@@ -197,7 +202,25 @@ A very short word (five or six letters) is worth a gamble, but flag the risk fir
 
 ---
 
-## Assembling the prompt
+## Direct image-generation workflow
+
+1. Actually inspect the supplied photo. Use it as the reference image in the image-generation call.
+2. Build one English generation instruction using the structure below, then generate the image directly.
+3. Include this framing clause by default:
+
+   > Finish the artwork as a charming vintage postage stamp: a clean, even colored border about 4% of the
+   > short edge, with small rounded perforation bites along all four outer edges. Keep the scallops evenly
+   > spaced and aligned, retain the original aspect ratio, and keep important subjects safely inside the
+   > frame. The frame color is drawn from the artwork and darkened slightly. No text, denomination, logo,
+   > watermark, signature, or unrelated decorative objects in the border.
+
+4. Keep the border only when it supports the request. If the user explicitly asks for an unframed image,
+   omit the clause. If a precise matching frame matters more than the generated frame, generate the artwork
+   without a frame and use `tools/stamp-frame.html` afterwards.
+5. Return the generated image, one short sentence about the treatment, and three concise tuning options.
+   Do not output the long prompt by default.
+
+## Assembling the generation instruction
 
 Write it as **one continuous natural-language paragraph**, medium length (roughly 250–400 words).
 **Over-specifying backfires** — the denser the constraints, the more mechanically the model follows each
@@ -219,7 +242,8 @@ clause. That is exactly what produces wallpaper water and bubble-tea flowers.
 > Delicate dark linework for branches, railings, lamp posts and wires. Soft warm glows around lamps,
 > windows and lights are welcome. Densely populated with many tiny figures and small objects — each a simple
 > painted shape with no facial features — so the eye can wander and keep finding things. Composition fills
-> the frame edge to edge, no vignette, no border, no readable text.
+> the frame edge to edge, no vignette, no readable text. Add the postage-stamp framing clause above unless
+> the user asks for an unframed image or a separately applied precise frame.
 
 9. **Negatives**: `Avoid: photorealism, 3D render, CGI, lens blur, bokeh, depth of field, HDR, glossy highlights, harsh photographic shadows, flat vector or clip-art look, muted desaturated grey palette, watermarks, signatures, readable text.` Append the figure negatives when a face is visible.
 10. **Aspect ratio**: follow the source photo by default, to protect the original composition.
@@ -228,11 +252,13 @@ clause. That is exactly what produces wallpaper water and bubble-tea flowers.
 
 ## Finished framing: postage stamp
 
-The chosen presentation format. Four hard rules:
+The chosen presentation format. Use direct image generation by default; use the local tool only for the
+precise fallback. Four hard rules:
 
-1. **Never let the image model draw the frame** — it comes out skewed, corners misaligned, text garbled.
-   Keep `no border` in the style lock block; the frame is added after generation.
-2. **Output dimensions must match the source exactly** — the stamp fills the entire canvas, the perforations
+1. **For a direct frame, request rounded postal perforations, not triangular saw teeth.** Ask for an even,
+   aligned, colored edge with no text by default. If the edge is visibly skewed, uneven or distracting,
+   regenerate once without it and use the local tool.
+2. **Output dimensions must match the source ratio** — the stamp fills the entire canvas, the perforations
    bite into the outermost edge, and the inner artwork is cropped to fit. Users pair the framed version with
    the original side by side, so the ratio has to match.
 3. **Pull the accent color from the artwork**, then darken it by about 40%. Never default to black or white.
@@ -244,10 +270,9 @@ The chosen presentation format. Four hard rules:
 - below it, small: region and year (`WASHINGTON · 2025`)
 - bottom right: a denomination number
 
-`tools/stamp-frame.html` in this repository implements this framing. Open it in a browser, choose the
-finished illustration, optionally enter the three caption fields, and download the transparent PNG. It
-keeps the source canvas dimensions and uses small round perforations (postal-stamp teeth), rather than
-harsh triangular zigzags.
+`tools/stamp-frame.html` is the exact-frame fallback. Open it in a browser, choose the finished illustration,
+optionally enter the three caption fields, and download the transparent PNG. It keeps the source canvas
+dimensions and uses small round perforations (postal-stamp teeth), rather than harsh triangular zigzags.
 
 **A consistent format across the whole batch matters more than any single frame.** The same frame on
 fifteen images makes them a body of work; without it they are fifteen loose pictures.
@@ -256,15 +281,16 @@ fifteen images makes them a body of work; without it they are fifteen loose pict
 
 ## Output format
 
-1. One sentence on what you read in the photo, and whether it suits this style.
-2. The English prompt, in a code block.
+1. Generate and return the finished image.
+2. One sentence on what you read in the photo, whether it suits this style, and whether the stamp frame was
+   applied directly or should be added with the precise local tool.
 3. A short explanation **in the user's language**, covering only what is **new or unusual about this
-   particular prompt**. Do not restate the fixed skeleton every time.
-4. A reminder to upload reference images alongside the photo.
-5. Three tuning suggestions, each a sentence they can drop in or swap out. When a face is visible, one of
+   particular image**. Do not restate the fixed skeleton every time.
+4. A reminder to upload reference images alongside the photo when useful.
+5. Three tuning suggestions, each a sentence for the next generation. When a face is visible, one of
    them is always the face escape hatch (pull back, turn to profile, or go to silhouette).
-6. If the user asks for a finished stamp image, tell them to apply `tools/stamp-frame.html` after generating
-   the illustration. Do not ask the image model to draw the perforated border.
+6. Only when the user asks for a prompt-only result, return the English generation instruction in a code
+   block instead of generating an image.
 
 ## Fidelity
 
@@ -278,7 +304,9 @@ never touch the style lock block.
 - **Never name a brand, company or living illustrator.** Describe visual traits.
 - **Do not drift toward flat vector, muted, or minimal.** This is the most common failure. The style is
   hand-painted, cheerful and dense.
-- Never ask for readable text, and never let the model draw the frame.
+- Generate the illustration directly by default; only provide a copy-paste prompt when the user asks for one.
+- Use the postage-stamp framing clause by default, unless the user asks for no frame or needs the precise
+  local framing fallback.
 - Keep the prompt medium length. Do not pile on dozens of clauses.
 - Give one good version plus tuning notes, not several versions to choose between.
 
@@ -292,6 +320,8 @@ never touch the style lock block.
 - [ ] Large face present → rendering-consistency line, full facial spec (or "no facial features"), and
       figure negatives are all included
 - [ ] Signage present → written as abstract letterforms, with the overlay-afterwards tip given
-- [ ] Framing discussed → said the model must not draw it, and that output matches source dimensions
+- [ ] Direct image generated using the supplied photo as the reference image
+- [ ] Framing requested → prompt has rounded, aligned postage-stamp perforations and source aspect ratio
+- [ ] Precise frame requested → used or directed the user to the local framing fallback
 - [ ] Reminded the user to upload reference images
 - [ ] Said so plainly if the photo is a poor fit for this style
