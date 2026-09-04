@@ -1,6 +1,6 @@
 ---
 name: cozy-flat-illustration
-description: Transform a user-supplied photo into a direct, finished comforting puzzle and greeting-card illustration: cheerful hand-painted flat shapes, simplified people with kind faces, small scene-specific discoveries, and an optional perforated postage-stamp edge. Use when the user asks to turn a photo into a cozy, whimsical, healing, storybook, puzzle-like, illustrated-travel, or hand-painted scene.
+description: Transform a user-supplied photo into a direct, finished comforting puzzle and greeting-card illustration: cheerful hand-painted flat shapes, simplified people with kind faces, small scene-specific discoveries, and a default warm-ivory perforated postage-stamp edge. Use when the user asks to turn a photo into a cozy, whimsical, healing, storybook, puzzle-like, illustrated-travel, or hand-painted scene.
 ---
 
 # Cozy Illustrated Scene
@@ -60,7 +60,7 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
    - what to retain from the photo;
    - simplified scene layout and the chosen additions;
    - the visual target block below;
-   - optional stamp-frame block;
+   - default stamp-frame block;
    - avoid list.
 4. **Generate the image directly.** Return the image plus one concise explanation in the user's language and
    three short tuning options. Show the full English prompt only when the user asks for it.
@@ -87,10 +87,10 @@ Use whenever a person with a visible face appears:
 > photographic likeness. No blank faces, mask-like faces, uncanny realism, glossy anime eyes or featureless
 > faces on medium or large figures.
 
-## Optional postage-stamp edge
+## Postage-stamp edge: default
 
-Use a stamp edge by default only when the user wants a keepsake, travel-card or postage-stamp treatment. Keep
-the artwork itself more important than the frame.
+Finish every image with a stamp edge unless the user explicitly asks for **no border** or a plain illustration.
+Keep the artwork itself more important than the frame.
 
 > Finish as a vintage postage stamp with a clean warm ivory or parchment border about 4% of the short edge and
 > small rounded perforation bites evenly aligned around every outer edge. If the user specifies a border color,
@@ -107,4 +107,4 @@ For a pixel-perfect, repeatable frame across a set, use `tools/stamp-frame.html`
 - [ ] At least five small additions fit the scene naturally.
 - [ ] Visible faces are complete, warm and simplified; distant backs may stay featureless.
 - [ ] Any signage is abstracted; there is no readable generated text.
-- [ ] A stamp edge appears only when the user wants that treatment.
+- [ ] A warm-ivory stamp edge appears, unless the user explicitly asked for no border.
