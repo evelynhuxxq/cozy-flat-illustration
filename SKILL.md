@@ -1,43 +1,62 @@
 ---
 name: cozy-flat-illustration
-description: "Transform a user-supplied photo into a direct, finished comforting puzzle and greeting-card illustration: cheerful hand-painted flat shapes, simplified people with kind faces, small scene-specific discoveries, and a default warm-ivory perforated postage-stamp edge. Use when the user asks to turn a photo into a cozy, whimsical, healing, storybook, puzzle-like, illustrated-travel, or hand-painted scene."
+description: "Transform a user-supplied photo into a direct, finished comforting editorial illustration through abstract visual extraction and playful recomposition—not a one-to-one painted translation. Use bright flat shapes, graphic figures with kind faces, a few scene-specific discoveries, and a default warm-ivory perforated postage-stamp edge when the user asks for cozy, whimsical, healing, storybook, puzzle-like, illustrated-travel, or hand-painted scenes."
 ---
 
 # Cozy Illustrated Scene
 
 Turn the supplied photo into a finished image with the image-generation tool. Do not make the user copy a
-prompt into another app unless they explicitly ask for a prompt-only version. Use the photo as the reference
-for subject, composition and mood, but **redesign it as an illustration rather than repainting the pixels**.
+prompt into another app unless they explicitly ask for a prompt-only version. Treat the photo as a bag of story
+ingredients, not a blueprint: extract its mood, visual symbols and spatial rhythm, then **recompose them into
+an illustration rather than translating each pixel, object or person**.
 
 Do not name artists, studios, brands or companies in a generation prompt. Describe the visual traits instead.
 
 ## Visual target
 
-Make a bright, comforting, puzzle-like editorial illustration. It should feel like a painted paper good
-enough to linger over: simple large shapes at first glance, then delightful small discoveries on a second
-look.
+Make a bright, comforting, graphic editorial illustration. It should feel like a charming painted paper or
+travel keepsake: bold simple shapes at first glance, a handful of thoughtful discoveries on a second look.
 
-- **Shape first, not oil paint.** Rebuild the photo as 2–5 layers of clear, simplified silhouettes and color
-  blocks. Flatten perspective slightly; keep major architecture, mountains, trees and objects legible.
-- **Medium.** Use opaque gouache, waxy crayon and colored-pencil-like marks on lightly textured paper:
-  chalky coverage, imperfect hand-drawn contour lines, small dry-brush variations. Do not use glossy blending,
-  deep realistic shading, thick impasto, cinematic lighting or painterly realism.
-- **Color.** Use clean, uplifting colors with generous cream or sky-blue breathing room: powder blue, soft
-  coral, tomato red, leaf green, buttery yellow, ultramarine, peach, warm white. Avoid muddy brown casts and
-  an all-grey muted palette.
-- **Linework.** Use a few dark navy, charcoal or deep-green hand-drawn lines to anchor windows, branches,
-  railings, waves and clothing folds. Lines may wobble slightly; they must not look like computer vectors.
-- **Figures.** Make people graphic and warm. A visible face always gets two small aligned eyes, soft brows, a
-  nose mark and a small closed mouth in the same painted texture as the scene. Never leave a visible face
-  blank, mask-like or photorealistic. Distant or back-facing figures can be simple shapes.
-- **Abstraction.** Simplify detail into patterned marks: a forest becomes layered pine triangles and leaf dabs;
-  water becomes broad bands with a few long strokes; a city becomes stacked façades, windows and awnings. Do
-  not reproduce every photographic shadow, reflection, crease or texture.
+- **Abstract first.** Recompose the scene as 3–5 broad color areas and a few memorable silhouettes. Move,
+  enlarge, crop, combine or remove source elements whenever that makes a clearer, more pleasing picture. Do not
+  preserve the camera framing by default.
+- **Flat picture-making, not painterly rendering.** Use mostly opaque, clean, matte gouache-like color fields
+  with a very light paper grain. Use only one or two simple shadow shapes per large object. Do not model volume
+  with brushstrokes, realistic light, visible paint buildup, dense speckles or intricate material texture.
+- **Color.** Choose a small, fresh palette of 4–7 harmonized colors plus warm white: powder blue, soft coral,
+  tomato red, leaf green, buttery yellow, ultramarine and peach. Let cream or sky-blue areas breathe. Avoid
+  muddy browns, greyed-out realism and a universal sepia cast.
+- **Linework.** Use sparse dark-navy, charcoal or deep-green drawn lines only where they clarify a silhouette,
+  window, branch, railing, wave or clothing fold. Let most forms be defined by color blocks, not outlines.
+- **Figures.** Turn people into warm graphic characters with simplified bodies and clear clothing shapes. A
+  visible face gets two small aligned eyes, soft brows, a nose mark and a small closed mouth. Never leave a
+  visible face blank, mask-like, hyper-detailed or photorealistic. Convert background crowds into a few small
+  color-and-shape groups rather than individual portraits.
+- **Quiet surfaces.** Turn a forest into layered pine shapes and a few leaf dabs; water into broad bands and a
+  few long marks; buildings into stacked façades and awnings. Do not reproduce every shadow, reflection, rock,
+  crease, tree branch or photographic texture.
+
+## Abstract extraction, not one-to-one translation
+
+Before composing, name only these four things:
+
+1. **Story:** the emotional moment, such as a slow ferry ride, a mountain outing or a roadside stop.
+2. **Anchors:** 3–5 motifs worth recognizing, such as the red truck, ferry window, stone stairs, hiker or tree
+   line.
+3. **Picture idea:** one deliberate visual move that the photo does not need to supply—an oversized window, a
+   winding path, a broad sky, a patterned stone wall, a simplified close-up object or a gentler viewpoint.
+4. **Omissions:** remove at least half of the remaining literal detail. A good empty area is better than a
+   faithful copy of clutter.
+
+Use the story and anchors, then invent the picture. Preserve recognizability, not photographic accuracy. For
+example, turn a crowd into three walking color groups, turn engraved text into nonverbal motifs, and turn many
+trees into overlapping dark-and-light green shapes.
 
 ## Add meaningful small discoveries
 
-After preserving the photo's 3–6 defining elements, add **5–12 small, context-appropriate details**. Spread
-them through foreground, middle ground and distance. They must enrich the story, never look like random filler.
+After preserving the story and 3–5 anchors, add **3–7 small, context-appropriate details**. Spread them with
+restraint; open sky, water, walls or ground should remain quiet. Each addition must enrich the story, never
+look like random filler.
 
 | Source scene | Good additions |
 | --- | --- |
@@ -51,11 +70,11 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
 
 ## Workflow
 
-1. **Read the photo.** Identify the story, 3–6 elements that must remain, the dominant palette, and what can
-   be simplified or removed. Preserve the source aspect ratio.
-2. **Choose the hierarchy.** Decide the main subject, 2–3 large supporting shapes, and the discovery details.
-   For people in a travel scene, preserve pose, clothing and hair silhouette; make the setting the richer part
-   unless the user explicitly asks for a portrait.
+1. **Read the photo.** Identify the story, 3–5 anchors, dominant palette, one new picture idea, and the
+   omissions. Preserve the source aspect ratio, but not its exact camera framing.
+2. **Choose the hierarchy.** Decide the main subject, 2–3 large supporting shapes, one generous quiet area and
+   3–7 discovery details. For people in a travel scene, preserve a recognizable pose, clothing and hair
+   silhouette; do not reproduce every person or every background object.
 3. **Build one English generation instruction** with the following order:
    - what to retain from the photo;
    - simplified scene layout and the chosen additions;
@@ -81,13 +100,14 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
 
 Use this wording, adapting only the palette and scene nouns:
 
-> Render as a cheerful, comforting hand-painted editorial illustration made from simplified flat gouache
-> shapes, waxy crayon texture and small colored-pencil details on softly textured paper. Use a clear silhouette
-> hierarchy, slightly flattened perspective, bright clean color blocks, warm off-white highlights and a few
-> loose charcoal or deep-navy contour lines. Make it whimsical and inviting rather than realistic: readable
-> objects, gentle irregular hand-drawn edges, and small delightful things to discover throughout the scene.
-> Avoid oil-paint realism, airbrushed gradients, cinematic lighting, heavy shadows, glossy rendering, 3D, CGI,
-> photorealism, dense brown sepia, flat computer-vector shapes, unreadable text, watermarks and signatures.
+> Recompose the photo as a bright, comforting graphic editorial illustration, not a literal painted copy.
+> Build the image from a few large opaque matte gouache-like color shapes, a small harmonious palette, slightly
+> flattened perspective, warm off-white breathing room and sparse dark-navy hand-drawn lines. Use only a faint
+> paper grain and simple decorative marks; keep surfaces quiet and the silhouette hierarchy obvious. Make the
+> scene whimsical, spacious and inviting, with a few delightful discoveries rather than dense detail.
+> Avoid oil-paint realism, painterly brush modeling, dense speckles, realistic material texture, airbrushed
+> gradients, cinematic lighting, heavy shadows, glossy rendering, 3D, CGI, photorealism, muddy brown or sepia,
+> hyper-detailed linework, flat computer-vector shapes, readable text, watermarks and signatures.
 
 ### People block
 
@@ -115,10 +135,11 @@ denomination manually in a browser.
 
 ## Checks before returning
 
-- [ ] The photo's story and major shapes are still recognizable.
-- [ ] The scene reads as flat, graphic gouache and paper texture—not oil paint or a filtered photograph.
+- [ ] The photo's story and selected anchors are recognizable, without copying all its literal detail.
+- [ ] The scene reads as abstracted, flat graphic gouache-like color fields—not oil paint or a filtered photograph.
 - [ ] The palette is fresh and comforting, with clear color separation.
-- [ ] At least five small additions fit the scene naturally.
+- [ ] The picture has a deliberate recomposition and one generous quiet area.
+- [ ] Three to seven small additions fit the scene naturally.
 - [ ] Visible faces are complete, warm and simplified; distant backs may stay featureless.
 - [ ] Any signage is abstracted; there is no readable generated text.
 - [ ] A warm-ivory stamp edge appears, unless the user explicitly asked for no border.
