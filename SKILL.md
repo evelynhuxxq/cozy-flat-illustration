@@ -15,7 +15,8 @@ Do not name artists, studios, brands or companies in a generation prompt. Descri
 ## Visual target
 
 Make a bright, comforting, graphic editorial illustration. It should feel like a charming painted paper or
-travel keepsake: bold simple shapes at first glance, a handful of thoughtful discoveries on a second look.
+travel keepsake: bold simple shapes at first glance, then a rich constellation of thoughtful discoveries on a
+second look.
 
 - **Abstract first.** Recompose the scene as 3–5 broad color areas and a few memorable silhouettes. Move,
   enlarge, crop, combine or remove source elements whenever that makes a clearer, more pleasing picture. Do not
@@ -45,8 +46,8 @@ Before composing, name only these four things:
    line.
 3. **Picture idea:** one deliberate visual move that the photo does not need to supply—an oversized window, a
    winding path, a broad sky, a patterned stone wall, a simplified close-up object or a gentler viewpoint.
-4. **Omissions:** remove at least half of the remaining literal detail. A good empty area is better than a
-   faithful copy of clutter.
+4. **Omissions:** remove at least half of the remaining literal detail. Replace it with purposeful color fields,
+   motifs or a small invented vignette—not an unresolved blank area.
 
 Use the story and anchors, then invent the picture. Preserve recognizability, not photographic accuracy. For
 example, turn a crowd into three walking color groups, turn engraved text into nonverbal motifs, and turn many
@@ -54,17 +55,18 @@ trees into overlapping dark-and-light green shapes.
 
 ## Add meaningful small discoveries
 
-After preserving the story and 3–5 anchors, add **3–7 small, context-appropriate details**. Spread them with
-restraint; open sky, water, walls or ground should remain quiet. Each addition must enrich the story, never
-look like random filler.
+After preserving the story and 3–5 anchors, add **7–14 small, context-appropriate details**. Arrange them as
+2–4 miniature discovery clusters—such as a flower-and-animal corner, a small resting spot, a distant activity
+or a patterned foreground—rather than scattering filler evenly. Keep one broad quiet area, but give it a
+purposeful role as sky, water, wall, path or large color field.
 
 | Source scene | Good additions |
 | --- | --- |
-| Mountain, forest, meadow | wildflowers, birds, marmots or squirrels, hikers, a trail marker, tiny backpacks, butterflies, a dog |
-| Water, ferry, harbour | gulls, sailboats, a ferry, buoy, folded map, thermos, binoculars, small shoreline houses |
-| Street, market, town | striped awnings, flower boxes, bicycles, fruit crates, dogs, planters, tiny passers-by, cafe chairs |
-| Interior, train, ferry cabin | a book, tote bag, cup, luggage, potted plant, small reflection, a distant boat or shoreline detail |
-| Winter or night | uneven snowfall, warm windows, bundled walkers, lamps, wreaths, a small animal, stars |
+| Mountain, forest, meadow | wildflower patches, birds, marmots or squirrels, hikers, trail markers, tiny backpacks, a picnic thermos, butterflies, a dog, a sketchbook |
+| Water, ferry, harbour | gulls, sailboats, a ferry, buoy, folded map, thermos, binoculars, small shoreline houses, flowerpots, a striped blanket |
+| Street, market, town | striped awnings, flower boxes, bicycles, fruit crates, dogs, planters, tiny passers-by, cafe chairs, baskets, window plants |
+| Interior, train, ferry cabin | a book, tote bag, cup, luggage, potted plant, small reflection, a distant boat or shoreline detail, ticket-like motifs, a scarf |
+| Winter or night | uneven snowfall, warm windows, bundled walkers, lamps, wreaths, a small animal, stars, footprints, a steaming cup |
 
 Choose only details that make sense for the photo. Keep recognizable objects as simple, graphic painted forms.
 
@@ -72,9 +74,9 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
 
 1. **Read the photo.** Identify the story, 3–5 anchors, dominant palette, one new picture idea, and the
    omissions. Preserve the source aspect ratio, but not its exact camera framing.
-2. **Choose the hierarchy.** Decide the main subject, 2–3 large supporting shapes, one generous quiet area and
-   3–7 discovery details. For people in a travel scene, preserve a recognizable pose, clothing and hair
-   silhouette; do not reproduce every person or every background object.
+2. **Choose the hierarchy.** Decide the main subject, 2–3 large supporting shapes, one purposeful quiet area,
+   and 2–4 discovery clusters containing 7–14 details. For people in a travel scene, preserve a recognizable
+   pose, clothing and hair silhouette; do not reproduce every person or every background object.
 3. **Build one English generation instruction** with the following order:
    - what to retain from the photo;
    - simplified scene layout and the chosen additions;
@@ -104,7 +106,8 @@ Use this wording, adapting only the palette and scene nouns:
 > Build the image from a few large opaque matte gouache-like color shapes, a small harmonious palette, slightly
 > flattened perspective, warm off-white breathing room and sparse dark-navy hand-drawn lines. Use only a faint
 > paper grain and simple decorative marks; keep surfaces quiet and the silhouette hierarchy obvious. Make the
-> scene whimsical, spacious and inviting, with a few delightful discoveries rather than dense detail.
+> scene whimsical, spacious and inviting, with 2–4 concentrated clusters of delightful, scene-specific details
+> to reward looking closely rather than an even spread of filler.
 > Avoid oil-paint realism, painterly brush modeling, dense speckles, realistic material texture, airbrushed
 > gradients, cinematic lighting, heavy shadows, glossy rendering, 3D, CGI, photorealism, muddy brown or sepia,
 > hyper-detailed linework, flat computer-vector shapes, readable text, watermarks and signatures.
@@ -138,8 +141,8 @@ denomination manually in a browser.
 - [ ] The photo's story and selected anchors are recognizable, without copying all its literal detail.
 - [ ] The scene reads as abstracted, flat graphic gouache-like color fields—not oil paint or a filtered photograph.
 - [ ] The palette is fresh and comforting, with clear color separation.
-- [ ] The picture has a deliberate recomposition and one generous quiet area.
-- [ ] Three to seven small additions fit the scene naturally.
+- [ ] The picture has a deliberate recomposition, one purposeful quiet area and no unresolved emptiness.
+- [ ] Seven to fourteen small additions form two to four natural discovery clusters.
 - [ ] Visible faces are complete, warm and simplified; distant backs may stay featureless.
 - [ ] Any signage is abstracted; there is no readable generated text.
 - [ ] A warm-ivory stamp edge appears, unless the user explicitly asked for no border.
