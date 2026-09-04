@@ -79,6 +79,10 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
 
 ## Workflow
 
+0. **Separate multiple inputs.** When the user supplies multiple photos, treat each photo as an independent
+   illustration request. Generate one finished, separately framed image for each input photo, using one
+   generation request per output. Never combine several inputs into a collage, contact sheet, split panel,
+   merged panorama or single composite story unless the user explicitly asks for that format.
 1. **Read the photo.** Identify the story, 3–5 anchors, dominant palette, one new picture idea, and the
    omissions. Preserve the source aspect ratio, but not its exact camera framing.
 2. **Choose the hierarchy.** Decide the main subject, 2–3 large supporting shapes, one purposeful quiet area,
@@ -146,3 +150,5 @@ denomination manually in a browser.
 - [ ] Visible faces capture mood and gesture through abstracted, complete, warm features; distant backs may stay featureless.
 - [ ] Any signage is abstracted; there is no readable generated text.
 - [ ] A warm-ivory stamp edge appears, unless the user explicitly asked for no border.
+- [ ] For multiple supplied photos, each photo has its own separate finished output; no collage or merged scene
+      was made unless explicitly requested.
