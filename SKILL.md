@@ -14,28 +14,34 @@ Do not name artists, studios, brands or companies in a generation prompt. Descri
 
 ## Visual target
 
-Make a bright, comforting, graphic editorial illustration. It should feel like a charming painted paper or
-travel keepsake: bold simple shapes at first glance, then a rich constellation of thoughtful discoveries on a
-second look.
+Make a bright, comforting, refined narrative illustration. It should feel like a carefully composed travel
+keepsake or illustrated stationery: beautiful and cohesive from afar, then full of small story moments on a
+second look. Do not make a rough sketch, a crude cut-paper collage or a literal painted photo.
 
-- **Abstract first.** Recompose the scene as 3–5 broad color areas and a few memorable silhouettes. Move,
-  enlarge, crop, combine or remove source elements whenever that makes a clearer, more pleasing picture. Do not
-  preserve the camera framing by default.
-- **Flat picture-making, not painterly rendering.** Use mostly opaque, clean, matte gouache-like color fields
-  with a very light paper grain. Use only one or two simple shadow shapes per large object. Do not model volume
-  with brushstrokes, realistic light, visible paint buildup, dense speckles or intricate material texture.
-- **Color.** Choose a small, fresh palette of 4–7 harmonized colors plus warm white: powder blue, soft coral,
-  tomato red, leaf green, buttery yellow, ultramarine and peach. Let cream or sky-blue areas breathe. Avoid
-  muddy browns, greyed-out realism and a universal sepia cast.
-- **Linework.** Use sparse dark-navy, charcoal or deep-green drawn lines only where they clarify a silhouette,
-  window, branch, railing, wave or clothing fold. Let most forms be defined by color blocks, not outlines.
-- **Figures.** Turn people into warm graphic characters with simplified bodies and clear clothing shapes. A
-  visible face gets two small aligned eyes, soft brows, a nose mark and a small closed mouth. Never leave a
-  visible face blank, mask-like, hyper-detailed or photorealistic. Convert background crowds into a few small
-  color-and-shape groups rather than individual portraits.
-- **Quiet surfaces.** Turn a forest into layered pine shapes and a few leaf dabs; water into broad bands and a
-  few long marks; buildings into stacked façades and awnings. Do not reproduce every shadow, reflection, rock,
-  crease, tree branch or photographic texture.
+- **Designed composition first.** Recompose the scene around one strong focal moment, then balance it with a
+  foreground, middle-ground and distance. Move, enlarge, crop, combine or remove source elements whenever that
+  creates a more beautiful rhythm of large and small shapes. Do not preserve the camera framing by default.
+- **Polished, graphic paint—not oil and not rough.** Build the scene from confident, simplified color masses
+  and layered shapes, with only very subtle paper tooth. Allow an occasional broad, deliberate brush sweep or
+  transparent wash, but never render every leaf, pebble, fabric weave or material surface. Never cover the
+  whole image with grit, antique patina, scratchy pencil, dense speckles, dry-brush noise or visibly built-up
+  paint. Use one or two simple shadow shapes per large object; never model volume with realistic lighting.
+- **Color and value.** Choose a deliberately edited 4–7 color palette plus warm white. Create beauty through
+  unexpected color relationships and clear light/dark grouping: powder blue, peach, coral, tomato red, leaf
+  green, ultramarine, butter yellow and cream are useful starting points. Avoid muddy browns, greyed-out
+  realism and a universal sepia cast.
+- **Linework.** Use graceful dark-navy, charcoal or deep-green lines with varied weight to clarify selected
+  windows, branches, railings, waves and clothing folds. Let the marks look considered and elegant, never like
+  unfinished sketch lines or computer vectors.
+- **Figures.** Turn people into warm graphic characters with a clear pose, clothing silhouette and gesture.
+  For a medium or large visible face, preserve its feeling and direction but not its photographic likeness:
+  use a rounded skin-color shape, a simple hair mass, two small oval or crescent eyes, soft curved brows, a tiny
+  nose mark, one short closed-mouth curve and a restrained blush. Never leave a face blank, mask-like,
+  hyper-detailed, glossy-anime or photorealistic. Convert background crowds into elegant small color groups.
+- **Integrated richness.** Turn a forest into layered canopies, trunks and a few leaf motifs; water into broad
+  bands, long reflections and small boats; buildings into stacked façades, roof rhythms, windows and awnings.
+  Add many small motifs only where they belong to the composition—on a ledge, beside a path, inside a window,
+  around a foreground object—not as isolated stickers.
 
 ## Abstract extraction, not one-to-one translation
 
@@ -55,10 +61,11 @@ trees into overlapping dark-and-light green shapes.
 
 ## Add meaningful small discoveries
 
-After preserving the story and 3–5 anchors, add **7–14 small, context-appropriate details**. Arrange them as
+After preserving the story and 3–5 anchors, add **8–16 small, context-appropriate details**. Arrange them as
 2–4 miniature discovery clusters—such as a flower-and-animal corner, a small resting spot, a distant activity
-or a patterned foreground—rather than scattering filler evenly. Keep one broad quiet area, but give it a
-purposeful role as sky, water, wall, path or large color field.
+or a patterned foreground—plus a few repeating motifs that bind the picture together. Give every object a
+place in the scene and repeat its colors or shapes elsewhere; do not sprinkle unrelated stickers across empty
+space. Keep one broad quiet area, but give it a purposeful role as sky, water, wall, path or large color field.
 
 | Source scene | Good additions |
 | --- | --- |
@@ -75,7 +82,7 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
 1. **Read the photo.** Identify the story, 3–5 anchors, dominant palette, one new picture idea, and the
    omissions. Preserve the source aspect ratio, but not its exact camera framing.
 2. **Choose the hierarchy.** Decide the main subject, 2–3 large supporting shapes, one purposeful quiet area,
-   and 2–4 discovery clusters containing 7–14 details. For people in a travel scene, preserve a recognizable
+   and 2–4 discovery clusters containing 8–16 details. For people in a travel scene, preserve a recognizable
    pose, clothing and hair silhouette; do not reproduce every person or every background object.
 3. **Build one English generation instruction** with the following order:
    - what to retain from the photo;
@@ -83,50 +90,43 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
    - the visual target block below;
    - default stamp-frame block;
    - avoid list.
-4. **Generate the illustration directly, without asking the model to draw the border.** Do not return this
-   first-pass image yet.
-5. **Apply a mandatory final image-edit pass to the generated image.** The edit must preserve the illustration
-   exactly and make only this addition:
-
-   > Keep every part of the artwork unchanged. Add only a clean warm-ivory postage-stamp border about 4% of
-   > the short edge, with small rounded perforation bites evenly spaced around all four outer edges. Keep the
-   > artwork inside the border; do not crop, redraw, add text, change colors, alter faces, add logos, or add
-   > decorations. This is the final image.
-
-   Return only the second-pass framed image plus one concise explanation in the user's language and three short
-   tuning options. Show the full English prompt only when the user asks for it. If the user requests a different
-   frame color, replace “warm-ivory” with that exact color. Skip this step only when the user explicitly asks for
-   no border.
+4. **Generate the final framed illustration directly in one pass.** Include the stamp-edge block below in the
+   generation instruction and return that finished image. Do not use a separate image-edit pass. Show the full
+   English prompt only when the user asks for it. If the user requests a different frame color, use that exact
+   color. Skip the frame only when the user explicitly asks for no border.
 
 ### Reusable visual target block
 
 Use this wording, adapting only the palette and scene nouns:
 
-> Recompose the photo as a bright, comforting graphic editorial illustration, not a literal painted copy.
-> Build the image from a few large opaque matte gouache-like color shapes, a small harmonious palette, slightly
-> flattened perspective, warm off-white breathing room and sparse dark-navy hand-drawn lines. Use only a faint
-> paper grain and simple decorative marks; keep surfaces quiet and the silhouette hierarchy obvious. Make the
-> scene whimsical, spacious and inviting, with 2–4 concentrated clusters of delightful, scene-specific details
-> to reward looking closely rather than an even spread of filler.
-> Avoid oil-paint realism, painterly brush modeling, dense speckles, realistic material texture, airbrushed
-> gradients, cinematic lighting, heavy shadows, glossy rendering, 3D, CGI, photorealism, muddy brown or sepia,
-> hyper-detailed linework, flat computer-vector shapes, readable text, watermarks and signatures.
+> Recompose the photo as a refined, comforting narrative illustration, not a literal painted copy. Build a
+> beautiful hierarchy of foreground, middle-ground and distance using smooth matte color fields and simplified
+> layered shapes, a controlled small palette, slightly flattened perspective, graceful varied-weight dark-navy
+> lines and only a very faint paper tooth. Use broad intentional brush sweeps sparingly; do not individually
+> render leaves, stones, fabric texture or realistic materials. Keep edges and shapes polished rather than rough. Create
+> 2–4 integrated story clusters with 8–16 scene-specific discoveries, repeating colors and motifs to make the
+> whole picture feel designed. Use a purposeful quiet area for breathing room, not emptiness.
+> Avoid oil-paint realism, thick or muddy paint, vintage/antique patina, scratchy sketchiness, dense speckles,
+> all-over dry-brush noise, realistic material texture, individually rendered leaves, airbrushed gradients,
+> cinematic lighting, heavy shadows, glossy rendering, 3D,
+> CGI, photorealism, sepia casts, crude cut-paper collage, unreadable text, watermarks and signatures.
 
 ### People block
 
 Use whenever a person with a visible face appears:
 
-> Render every visible face as a kind, complete, stylized painted face: two small naturally aligned eyes, soft
-> brows, a subtle nose mark and a small closed mouth, all made with the same opaque gouache and pencil texture
-> as the rest of the image. Preserve the person's pose, hair silhouette and clothing, but do not chase
-> photographic likeness. No blank faces, mask-like faces, uncanny realism, glossy anime eyes or featureless
+> Render every medium or large visible face as a warm, abstracted character portrait that captures the person's
+> direction, calm mood, hair silhouette and gesture rather than their photographic likeness. Use a rounded face
+> shape, a simple painted hair mass, two small oval or crescent eyes, soft curved brows, a tiny nose mark, a
+> short closed-mouth curve and a restrained cheek blush. Keep all features simple and coherent with the scene.
+> No blank faces, mask-like faces, uncanny realism, glossy anime eyes, detailed skin texture or featureless
 > faces on medium or large figures.
 
 ## Postage-stamp edge: default
 
 Finish every image with a stamp edge unless the user explicitly asks for **no border** or a plain illustration.
-Keep the artwork itself more important than the frame. Always use the mandatory second-pass image edit in the
-workflow; never return the unframed first-pass image.
+Keep the artwork itself more important than the frame. Include it as part of the direct final generation; do not
+use a second image-editing pass.
 
 > Finish as a vintage postage stamp with a clean warm ivory or parchment border about 4% of the short edge and
 > small rounded perforation bites evenly aligned around every outer edge. If the user specifies a border color,
@@ -142,7 +142,7 @@ denomination manually in a browser.
 - [ ] The scene reads as abstracted, flat graphic gouache-like color fields—not oil paint or a filtered photograph.
 - [ ] The palette is fresh and comforting, with clear color separation.
 - [ ] The picture has a deliberate recomposition, one purposeful quiet area and no unresolved emptiness.
-- [ ] Seven to fourteen small additions form two to four natural discovery clusters.
-- [ ] Visible faces are complete, warm and simplified; distant backs may stay featureless.
+- [ ] Eight to sixteen details form two to four natural, compositionally integrated discovery clusters.
+- [ ] Visible faces capture mood and gesture through abstracted, complete, warm features; distant backs may stay featureless.
 - [ ] Any signage is abstracted; there is no readable generated text.
 - [ ] A warm-ivory stamp edge appears, unless the user explicitly asked for no border.

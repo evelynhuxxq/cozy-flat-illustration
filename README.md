@@ -17,4 +17,4 @@ Add this repository folder to your skills directory, then attach a photo and ask
 
 ## Optional stamp border
 
-The skill completes every illustration with a dedicated second image-edit pass that adds the warm-ivory perforated frame. Open `tools/stamp-frame.html` only when you want to choose a color or add captions manually.
+The skill generates every finished illustration directly with its warm-ivory perforated frame. Open `tools/stamp-frame.html` only when you want to choose a color or add captions manually.
