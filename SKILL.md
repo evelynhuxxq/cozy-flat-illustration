@@ -1,6 +1,6 @@
 ---
 name: cozy-flat-illustration
-description: Transform a user-supplied photo into a direct, finished comforting puzzle and greeting-card illustration: cheerful hand-painted flat shapes, simplified people with kind faces, small scene-specific discoveries, and a default warm-ivory perforated postage-stamp edge. Use when the user asks to turn a photo into a cozy, whimsical, healing, storybook, puzzle-like, illustrated-travel, or hand-painted scene.
+description: "Transform a user-supplied photo into a direct, finished comforting puzzle and greeting-card illustration: cheerful hand-painted flat shapes, simplified people with kind faces, small scene-specific discoveries, and a default warm-ivory perforated postage-stamp edge. Use when the user asks to turn a photo into a cozy, whimsical, healing, storybook, puzzle-like, illustrated-travel, or hand-painted scene."
 ---
 
 # Cozy Illustrated Scene
@@ -62,8 +62,20 @@ Choose only details that make sense for the photo. Keep recognizable objects as 
    - the visual target block below;
    - default stamp-frame block;
    - avoid list.
-4. **Generate the image directly.** Return the image plus one concise explanation in the user's language and
-   three short tuning options. Show the full English prompt only when the user asks for it.
+4. **Generate the illustration directly, without asking the model to draw the border.** Do not return this
+   first-pass image yet.
+5. **Apply a mandatory final image-edit pass to the generated image.** The edit must preserve the illustration
+   exactly and make only this addition:
+
+   > Keep every part of the artwork unchanged. Add only a clean warm-ivory postage-stamp border about 4% of
+   > the short edge, with small rounded perforation bites evenly spaced around all four outer edges. Keep the
+   > artwork inside the border; do not crop, redraw, add text, change colors, alter faces, add logos, or add
+   > decorations. This is the final image.
+
+   Return only the second-pass framed image plus one concise explanation in the user's language and three short
+   tuning options. Show the full English prompt only when the user asks for it. If the user requests a different
+   frame color, replace “warm-ivory” with that exact color. Skip this step only when the user explicitly asks for
+   no border.
 
 ### Reusable visual target block
 
@@ -90,14 +102,16 @@ Use whenever a person with a visible face appears:
 ## Postage-stamp edge: default
 
 Finish every image with a stamp edge unless the user explicitly asks for **no border** or a plain illustration.
-Keep the artwork itself more important than the frame.
+Keep the artwork itself more important than the frame. Always use the mandatory second-pass image edit in the
+workflow; never return the unframed first-pass image.
 
 > Finish as a vintage postage stamp with a clean warm ivory or parchment border about 4% of the short edge and
 > small rounded perforation bites evenly aligned around every outer edge. If the user specifies a border color,
 > use that exact color instead. Keep important subjects inside the edge. No text, denomination, logo, watermark
 > or decorative objects in the border.
 
-For a pixel-perfect, repeatable frame across a set, use `tools/stamp-frame.html` after image generation.
+`tools/stamp-frame.html` remains available when a person wants to add an optional place name, date or
+denomination manually in a browser.
 
 ## Checks before returning
 
